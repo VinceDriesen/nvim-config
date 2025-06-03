@@ -20,13 +20,8 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Hieronder zit ook split window met Ctrl + w + v/s
 
 -- Vanaf hiet de echte custom keybindings die ik zelf wil:
 
--- Dit opent preview view, waar ik files etc in kan zien!
-
 vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
-
-vim.keymap.set("n", "<leader>gl", function()
-	require("myplugins.toggleterm").toggle_lazygit()
-end, { noremap = true, silent = true })

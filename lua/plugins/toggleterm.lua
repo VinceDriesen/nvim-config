@@ -42,11 +42,19 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>gl",
+			"<leader>tg",
 			function()
 				_G.toggle_lazygit()
 			end,
 			desc = "Toggle lazygit terminal",
+			silent = true,
+			noremap = true,
+		},
+
+		{
+			"<leader>tt",
+			"<cmd>ToggleTerm direction=horizontal<CR>",
+			desc = "Toggle terminal (bottom split)",
 			silent = true,
 			noremap = true,
 		},
