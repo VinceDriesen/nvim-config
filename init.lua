@@ -26,9 +26,16 @@ require("defaults/settings")
 require("defaults/keymaps")
 
 -- lazy.nvim setup
-require("lazy").setup("plugins", {
+
+require("lazy").setup({
+	-- plugins map
+	{ import = "plugins" },
+
+	-- themes map
+	{ import = "themes" },
+
 	defaults = {
-		lazy = false,
+		lazy = false, -- of true, wat je wilt als standaard
 	},
 })
 
