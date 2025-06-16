@@ -21,7 +21,7 @@ return {
 					["n"] = "add", -- Nieuwe file aanmaken met 'n'
 					["N"] = "add_directory", -- Nieuwe map maken met 'A'
 					-- SHIFT+ENTER om cwd te veranderen naar geselecteerde map
-					["<S-CR>"] = function(state)
+					["+"] = function(state)
 						local node = state.tree:get_node()
 						if node.type == "directory" then
 							vim.cmd("cd " .. node.path)

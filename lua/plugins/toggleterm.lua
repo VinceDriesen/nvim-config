@@ -51,12 +51,12 @@ return {
 			noremap = true,
 		},
 
-		{
-			"<leader>tt",
-			"<cmd>ToggleTerm direction=horizontal<CR>",
-			desc = "Toggle terminal (bottom split)",
-			silent = true,
-			noremap = true,
-		},
+		-- {
+		-- 	"<leader>tt",
+		-- 	"<cmd>ToggleTerm direction=horizontal<CR>",
+		-- 	desc = "Toggle terminal (bottom split)",
+		-- 	silent = true,
+		-- 	noremap = true,
+		-- },
 	},
 }

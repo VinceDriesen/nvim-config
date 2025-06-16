@@ -1,3 +1,31 @@
+-- Theme
+
+local theme_state_file = vim.fn.stdpath("state") .. "/last_theme.txt"
+
+local function load_last_theme()
+	local f = io.open(theme_state_file, "r")
+	if f then
+		local theme_name = f:read("*l")
+		f:close()
+		if theme_name then
+			local ok, theme = pcall(require, "themes." .. theme_name)
+			if ok and theme.config then
+				theme.config()
+				print("Loaded theme from last session: " .. theme_name)
+				return
+			end
+		end
+	end
+	print("No previous theme found, loading default theme")
+	-- fallback: laad hier je default theme
+	local default_theme = "jouw_default_theme_naam"
+	local ok, theme = pcall(require, "themes." .. default_theme)
+	if ok and theme.config then
+		theme.config()
+	end
+end
+
+
 -- lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -39,6 +67,7 @@ require("lazy").setup({
 	},
 })
 
+load_last_theme()
 -- treesitter config
 local config = require("nvim-treesitter.configs")
 config.setup({

@@ -30,6 +30,16 @@ return {
 			local builtin = require("telescope.builtin")
 			local themes_path = vim.fn.stdpath("config") .. "/lua/themes"
 
+			local theme_state_file = vim.fn.stdpath("state") .. "/last_theme.txt"
+
+			local function save_theme(theme_name)
+				local f = io.open(theme_state_file, "w")
+				if f then
+					f:write(theme_name)
+					f:close()
+				end
+			end
+
 			local function theme_selector()
 				builtin.find_files({
 					prompt_title = "Select Theme",
@@ -51,6 +61,7 @@ return {
 							local ok, theme = pcall(require, "themes." .. theme_name)
 							if ok and theme.config then
 								theme.config()
+								save_theme(theme_name)
 							else
 								print("Kon theme config niet laden: " .. theme_file .. " " .. theme_name)
 								print("Inhoud van theme: " .. vim.inspect(theme))
